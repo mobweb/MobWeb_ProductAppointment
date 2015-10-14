@@ -36,7 +36,7 @@ class MobWeb_ProductAppointment_IndexController extends Mage_Core_Controller_Fro
             $mail->send();
 
             // Set the success message
-            Mage::getSingleton('core/session')->addSuccess($this->__('Your product alert request has been received.'));
+            Mage::getSingleton('core/session')->addSuccess($this->__('Your request has been received.'));
         }
 
         // Redirect the user to the previous page
