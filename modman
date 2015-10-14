@@ -1,0 +1,14 @@
+app/code/community/MobWeb/ProductAppointment app/code/community/MobWeb/ProductAppointment/
+
+app/design/frontend/base/default/layout/mobweb_productappointment.xml app/design/frontend/base/default/layout/mobweb_productappointment.xml
+
+app/design/frontend/base/default/template/catalog/product/view/appointment.phtml app/design/frontend/base/default/template/catalog/product/view/appointment.phtml
+
+app/locale/de_CH/mobweb_productappointment.csv app/locale/de_CH/mobweb_productappointment.csv
+app/locale/de_CH/mobweb_productappointment.csv app/locale/de_DE/mobweb_productappointment.csv
+app/locale/de_CH/mobweb_productappointment.csv app/locale/de_AT/mobweb_productappointment.csv
+
+app/etc/modules/MobWeb_ProductAppointment.xml app/etc/modules/MobWeb_ProductAppointment.xml
+
+# Clear the cache
+@shell   rm -rf $PROJECT/var/cache/* && echo "Magento Cache cleared"

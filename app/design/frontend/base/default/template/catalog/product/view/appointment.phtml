@@ -1,0 +1,74 @@
+<h2><?php echo $this->__('Appointment') ?></h2>
+<form action="<?php echo $this->getFormAction(); ?>" id="appointmentForm" method="post">
+    <div class="fieldset">
+        <h2 class="legend"><?php echo Mage::helper('contacts')->__('Book an appointment') ?></h2>
+        <ul class="form-list">
+            <li class="wide">
+                <div class="field">
+                    <label for="name" class="required"><em>*</em><?php echo Mage::helper('contacts')->__('Name') ?></label>
+                    <div class="input-box">
+                        <input name="name" id="name" title="<?php echo Mage::helper('core')->quoteEscape(Mage::helper('contacts')->__('Name')) ?>" value="<?php echo $this->escapeHtml($this->helper('contacts')->getUserName()) ?>" class="input-text required-entry" type="text" required />
+                    </div>
+                </div>
+            </li>
+            <li class="fields">
+                <div class="field">
+                    <label for="telephone"><?php echo Mage::helper('contacts')->__('Telephone') ?></label>
+                    <div class="input-box">
+                        <input name="telephone" id="telephone" title="<?php echo Mage::helper('core')->quoteEscape(Mage::helper('contacts')->__('Telephone')) ?>" value="" class="input-text" type="text" />
+                    </div>
+                </div>
+                <div class="field">
+                    <label for="email"><?php echo Mage::helper('contacts')->__('Email') ?></label>
+                    <div class="input-box">
+                        <input name="email" id="email" title="<?php echo Mage::helper('core')->quoteEscape(Mage::helper('contacts')->__('Email')) ?>" value="<?php echo $this->escapeHtml($this->helper('contacts')->getUserEmail()) ?>" class="input-text validate-email" type="email" />
+                    </div>
+                </div>
+            </li>
+            <li class="fields">
+                <div class="field">
+                    <label for="date" class="required"><em>*</em><?php echo Mage::helper('contacts')->__('Date') ?></label>
+                    <div class="input-box">
+                        <select id="date" name="date" title="<?php echo Mage::helper('contacts')->__('Date') ?>" class="validate-select" required>
+                            <option value="" selected disabled><?php echo $this->__('Please select a date...') ?></option>
+                            <?php foreach($this->getDateOptions() AS $dateOption) {
+                                    echo sprintf('<option>%s</option>', $dateOption);
+                            } ?>
+                        </select>
+                    </div>
+                </div>
+                <div class="field">
+                    <label for="date" class="required"><em>*</em><?php echo $this->__('Time') ?></label>
+                    <div class="input-box">
+                        <select id="time" name="time" title="<?php echo $this->__('Time') ?>" class="validate-select" required>
+                            <option value="" selected disabled><?php echo $this->__('Please select a time...') ?></option>
+                            <?php foreach($this->getTimeOptions() AS $timeOption) {
+                                    echo sprintf('<option>%s</option>', $timeOption);
+                            } ?>
+                        </select>
+                    </div>
+                </div>
+            </li>
+            <li class="wide">
+                <label for="comment"><?php echo Mage::helper('contacts')->__('Comment') ?></label>
+                <div class="input-box">
+                    <textarea name="comment" id="comment" title="<?php echo Mage::helper('core')->quoteEscape(Mage::helper('contacts')->__('Comment')) ?>" class="input-text" cols="5" rows="3"></textarea>
+                </div>
+            </li>
+        </ul>
+    </div>
+    
+    <?php // Hidden product field ?>
+    <input name="product" id="product" value="<?php echo $this->getProductDetails(); ?>" type="hidden" />
+
+    <div class="buttons-set">
+        <p class="required"><?php echo Mage::helper('contacts')->__('* Required Fields') ?></p>
+        <input type="text" name="hideit" id="hideit" value="" style="display:none !important;" />
+        <button type="submit" title="<?php echo Mage::helper('core')->quoteEscape(Mage::helper('contacts')->__('Submit')) ?>" class="button"><span><span><?php echo Mage::helper('contacts')->__('Submit') ?></span></span></button>
+    </div>
+</form>
+<script type="text/javascript">
+//<![CDATA[
+    var appointmentForm = new VarienForm('appointmentForm', true);
+//]]>
+</script>
