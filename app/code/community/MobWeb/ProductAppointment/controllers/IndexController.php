@@ -18,7 +18,7 @@ class MobWeb_ProductAppointment_IndexController extends Mage_Core_Controller_Fro
             // Prepare the email body
             $emailBody = '';
             foreach($parameters AS $key => $value) {
-                if($value) {
+                if($value = htmlentities($value)) {
                     $key = strtoupper(str_replace('_', ' ', $key));
                     $emailBody .= "$key:\n$value\n\n";
                 }
@@ -28,11 +28,11 @@ class MobWeb_ProductAppointment_IndexController extends Mage_Core_Controller_Fro
             $mail = Mage::getModel('core/email');
             $mail->setToName($emailRecipient);
             $mail->setToEmail($emailRecipient);
-            $mail->setBody($emailBody);
+            $mail->setBody(nl2br($emailBody));
             $mail->setSubject(sprintf('%s: %s', Mage::app()->getStore()->getFrontendName(), $this->__('Product Appointment Request')));
             $mail->setFromEmail($emailRecipient);
             $mail->setFromName($emailRecipient);
-            $mail->setType('text');
+            $mail->setType('html');
             $mail->send();
 
             // Set the success message
